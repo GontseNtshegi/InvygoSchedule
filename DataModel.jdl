@@ -1,0 +1,43 @@
+
+entity ScheduleUser {
+	email String required,
+    login String required,
+    firstname String required,
+    lastname String required,
+    password String required
+}
+
+entity ScheduleAuthority {
+	name String required
+}
+entity UserAuthority{
+	userId Long required
+    roleId Long required
+}
+
+entity Schedule{
+	userId Long required
+    workDate ZonedDateTime required
+    hours Long required
+}
+
+
+//relationship OneToMany {
+	//Users{userId} to RoleAuthority
+//}
+//relationship OneToMany {
+	//Roles{roleId} to RoleAuthority
+//}
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+//paginate Job with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
