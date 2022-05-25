@@ -2,28 +2,972 @@
 # This file will be used at compile time to generate Spring-MVC endpoint stubs using openapi-generator
 openapi: '3.0.1'
 info:
-  title: 'StuffScheduling'
+  title: 'Stuff Scheduling'
   version: 0.0.1
 servers:
   - url: http://localhost:8081/api
     description: Development server
   - url: https://localhost:8081/api
     description: Development server with TLS Profile
-paths: {}
-components:
-  responses:
-    Problem:
-      description: error occurred - see status code and problem object for more information.
-      content:
-        'application/problem+json':
+paths:
+  /api/users/{id}:
+    get:
+      tags:
+        - users-resource
+      operationId: getUsers
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            $ref: 'https://opensource.zalando.com/problem/schema.yaml#/Problem'
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Users'
+    put:
+      tags:
+        - users-resource
+      operationId: updateUsers
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Users'
+    delete:
+      tags:
+        - users-resource
+      operationId: deleteUsers
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+    patch:
+      tags:
+        - users-resource
+      operationId: partialUpdateUsers
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/Users'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Users'
+  /api/user-authorities/{id}:
+    get:
+      tags:
+        - user-authority-resource
+      operationId: getUserAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserAuthority'
+    put:
+      tags:
+        - user-authority-resource
+      operationId: updateUserAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAuthority'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserAuthority'
+    delete:
+      tags:
+        - user-authority-resource
+      operationId: deleteUserAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+    patch:
+      tags:
+        - user-authority-resource
+      operationId: partialUpdateUserAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAuthority'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/UserAuthority'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserAuthority'
+  /api/schedules/{id}:
+    get:
+      tags:
+        - schedule-resource
+      operationId: getSchedule
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Schedule'
+    put:
+      tags:
+        - schedule-resource
+      operationId: updateSchedule
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Schedule'
+    delete:
+      tags:
+        - schedule-resource
+      operationId: deleteSchedule
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+    patch:
+      tags:
+        - schedule-resource
+      operationId: partialUpdateSchedule
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Schedule'
+  /api/schedule-users/{id}:
+    get:
+      tags:
+        - schedule-user-resource
+      operationId: getScheduleUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ScheduleUser'
+    put:
+      tags:
+        - schedule-user-resource
+      operationId: updateScheduleUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduleUser'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ScheduleUser'
+    delete:
+      tags:
+        - schedule-user-resource
+      operationId: deleteScheduleUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+    patch:
+      tags:
+        - schedule-user-resource
+      operationId: partialUpdateScheduleUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduleUser'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/ScheduleUser'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ScheduleUser'
+  /api/schedule-authorities/{id}:
+    get:
+      tags:
+        - schedule-authority-resource
+      operationId: getScheduleAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ScheduleAuthority'
+    put:
+      tags:
+        - schedule-authority-resource
+      operationId: updateScheduleAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduleAuthority'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ScheduleAuthority'
+    delete:
+      tags:
+        - schedule-authority-resource
+      operationId: deleteScheduleAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+    patch:
+      tags:
+        - schedule-authority-resource
+      operationId: partialUpdateScheduleAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduleAuthority'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/ScheduleAuthority'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ScheduleAuthority'
+  /api/roles/{id}:
+    get:
+      tags:
+        - roles-resource
+      operationId: getRoles
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Roles'
+    put:
+      tags:
+        - roles-resource
+      operationId: updateRoles
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Roles'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Roles'
+    delete:
+      tags:
+        - roles-resource
+      operationId: deleteRoles
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+    patch:
+      tags:
+        - roles-resource
+      operationId: partialUpdateRoles
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Roles'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/Roles'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Roles'
+  /api/role-authorities/{id}:
+    get:
+      tags:
+        - role-authority-resource
+      operationId: getRoleAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RoleAuthority'
+    put:
+      tags:
+        - role-authority-resource
+      operationId: updateRoleAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleAuthority'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RoleAuthority'
+    delete:
+      tags:
+        - role-authority-resource
+      operationId: deleteRoleAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+    patch:
+      tags:
+        - role-authority-resource
+      operationId: partialUpdateRoleAuthority
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleAuthority'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/RoleAuthority'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RoleAuthority'
+  /api/users:
+    get:
+      tags:
+        - users-resource
+      operationId: getAllUsers_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Users'
+            application/x-ndjson:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Users'
+    post:
+      tags:
+        - users-resource
+      operationId: createUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Users'
+  /api/user-authorities:
+    get:
+      tags:
+        - user-authority-resource
+      operationId: getAllUserAuthorities_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserAuthority'
+            application/x-ndjson:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserAuthority'
+    post:
+      tags:
+        - user-authority-resource
+      operationId: createUserAuthority
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAuthority'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserAuthority'
+  /api/schedules:
+    get:
+      tags:
+        - schedule-resource
+      operationId: getAllSchedules_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Schedule'
+            application/x-ndjson:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Schedule'
+    post:
+      tags:
+        - schedule-resource
+      operationId: createSchedule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Schedule'
+  /api/schedule-users:
+    get:
+      tags:
+        - schedule-user-resource
+      operationId: getAllScheduleUsers_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScheduleUser'
+            application/x-ndjson:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScheduleUser'
+    post:
+      tags:
+        - schedule-user-resource
+      operationId: createScheduleUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduleUser'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ScheduleUser'
+  /api/schedule-authorities:
+    get:
+      tags:
+        - schedule-authority-resource
+      operationId: getAllScheduleAuthorities_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScheduleAuthority'
+            application/x-ndjson:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScheduleAuthority'
+    post:
+      tags:
+        - schedule-authority-resource
+      operationId: createScheduleAuthority
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduleAuthority'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ScheduleAuthority'
+  /api/roles:
+    get:
+      tags:
+        - roles-resource
+      operationId: getAllRoles_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Roles'
+            application/x-ndjson:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Roles'
+    post:
+      tags:
+        - roles-resource
+      operationId: createRoles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Roles'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Roles'
+  /api/role-authorities:
+    get:
+      tags:
+        - role-authority-resource
+      operationId: getAllRoleAuthorities_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleAuthority'
+            application/x-ndjson:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleAuthority'
+    post:
+      tags:
+        - role-authority-resource
+      operationId: createRoleAuthority
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleAuthority'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RoleAuthority'
+components:
+  schemas:
+    Users:
+      required:
+        - email
+        - name
+        - password
+        - surname
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        email:
+          type: string
+        name:
+          type: string
+        surname:
+          type: string
+        password:
+          type: string
+    UserAuthority:
+      required:
+        - roleId
+        - userId
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        roleId:
+          type: integer
+          format: int64
+    Schedule:
+      required:
+        - hours
+        - userId
+        - workDate
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        workDate:
+          type: string
+          format: date-time
+        hours:
+          type: integer
+          format: int64
+    ScheduleUser:
+      required:
+        - email
+        - firstname
+        - lastname
+        - login
+        - password
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        email:
+          type: string
+        login:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        password:
+          type: string
+    ScheduleAuthority:
+      required:
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    Roles:
+      required:
+        - roleName
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        roleName:
+          type: string
+    RoleAuthority:
+      required:
+        - roleId
+        - userId
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        roleId:
+          type: integer
+          format: int64
+
 
   securitySchemes:
-    jwt:
+    basicAuth:     # <-- arbitrary name for the security scheme
       type: http
-      description: JWT Authentication
-      scheme: bearer
-      bearerFormat: JWT
+      scheme: basic
+
 security:
-  - jwt: []
+  - basicAuth: []
